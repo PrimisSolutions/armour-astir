@@ -16,9 +16,9 @@
         <div class="resource flex-group-center">
           <label for="system.health.value" class="resource-label">Health</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number"/>
+            <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
+            <span> / </span>
+            <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number"/>
           </div>
         </div>
 
@@ -50,6 +50,7 @@
     <a class="item" data-tab="items">Items</a>
     <a class="item" data-tab="spells">Spells</a>
     <a class="item" data-tab="effects">Effects</a>
+    <a class="item" data-tab="traits">Traits</a>
   </nav>
 
   {{!-- Sheet Body --}}
@@ -102,6 +103,24 @@
     {{!-- Active Effects Tab --}}
     <div class="tab effects flexcol" data-group="primary" data-tab="effects">
       {{> "systems/armour-astir/templates/actor/parts/actor-effects.hbs"}}
+    </div>
+
+    {{!-- Traits Tab --}}
+    <div class="tab traits" data-group="primary" data-tab="traits">
+      <section class="grid grid-2col">
+        {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+        use both the "grid" and "grid-Ncol" class where "N" can be any number
+        from 1 to 12 and will create that number of columns.  --}}
+        <div class="traits flexcol">
+          {{#each system.traits as |trait key|}}
+          <div class="trait flexrow flex-group-center">
+            <label for="system.traits.{{key}}.value" class="resource-label rollable flexlarge align-left" data-label="{{localize (lookup @root.config.traits key)}}">{{localize (lookup @root.config.traits key)}}</label>
+            <input type="text" name="system.traits.{{key}}.value" value="{{trait.value}}" data-dtype="Number"/>
+            <span class="ability-mod rollable" data-roll="2d6+@traits.{{key}}.value" data-label="{{localize (lookup @root.config.traits key)}}">{{numberFormat trait.value decimals=0 sign=true}}</span>            </div>
+          {{/each}}
+        </div>
+
+      </section>
     </div>
 
   </section>

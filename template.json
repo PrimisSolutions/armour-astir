@@ -42,6 +42,32 @@
         "cha": {
           "value": 10
         }
+      },
+      "traits": {
+        "defy": {
+          "name": "Defy",
+          "value": 0
+        },
+        "sense": {
+          "name": "Sense",
+          "value": 0
+        },
+        "clash": {
+          "name": "Clash",
+          "value": 0
+        },
+        "talk": {
+          "name": "Talk",
+          "value": 0
+        },
+        "know": {
+          "name": "Know",
+          "value": 0
+        },
+        "channel": {
+          "name": "Channel",
+          "value": 0
+        }
       }
     },
     "npc": {
